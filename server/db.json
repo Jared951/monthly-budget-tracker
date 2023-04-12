@@ -1,0 +1,22 @@
+[
+    {
+        "paycheck": 3000,
+        "addtionalIncome": 0,
+        "totalIncome": 3000
+    }, 
+
+    {
+        "housing": 1200,
+        "car": 300,
+        "grocery": 200,
+        "phone": 100,
+        "internet": 50,
+        "entertainment": 50,
+        "other": 100,
+        "totalExpenses": 2000
+    }, 
+
+    {
+        "incomeMinusExpenses": 1000
+    }
+]
