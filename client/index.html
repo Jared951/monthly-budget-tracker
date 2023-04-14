@@ -8,9 +8,132 @@
     <title>Document</title>
 </head>
 <body>
-    <button id="btnId">Get All Finances</button>
+    <!-- <button id="btnId">Get All Finances</button>
     <button id="expenseBtn">Add Expense</button>
     <button id="deleteBtn">Delete Expense</button>
+
+    <table>
+		<tbody>
+			<tr>
+				<th>Paycheck</th>
+                <td>
+				<input class="income"/>
+                </td>
+			</tr>
+			<tr>
+				<th>Additional Income</th>
+				<td>
+                <input class="income"/>
+                </td>
+			</tr>
+
+			<tr>
+				<th>Housing</th>
+				<td>
+                    <input class="expense"/>
+                </td>
+			</tr>
+			<tr>
+				<th>Car Payment(insurance, gas, etc.)</th>
+				<td>
+                    <input class="expense"/>
+                </td>
+			</tr>
+			<tr>
+				<th>Grocery</th>
+				<td>
+                    <input class="expense"/>
+                </td>
+			</tr>
+            <tr>
+				<th>Phone</th>
+				<td>
+                    <input class="expense"/>
+                </td>
+			</tr>
+            <tr>
+				<th>Internet</th>
+				<td>
+                    <input class="expense"/>
+                </td>
+			</tr>
+            <tr>
+				<th>Entertainment</th>
+				<td>
+                    <input class="expense"/>
+                </td>
+			</tr>
+            <tr>
+				<th>Other</th>
+				<td>
+                    <input class="expense"/>
+                </td>
+			</tr>
+		</tbody>
+	</table>
+
+    <br></br>
+        <input id="addExpense"/>
+        <button id="submitExpense">Submit</button>
+    <br></br>
+
+    <table>
+		<tbody>
+			<tr>
+				<th>Income minus Expenses</th>
+				<td class="total">amount here</td>
+			</tr>
+		</tbody>
+	</table> -->
+
+    <table id="input-table">
+        <tbody>
+            <tr>
+                <td>
+                    <input placeholder="Income or Expense Name"/>
+                </td>
+                <td>
+                    <select>
+                        <option>Income</option>
+                        <option>Expense</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="number" placeholder="amount"/>
+                </td>
+                <td>
+                    <button onclick="toNewTable">Add Expense or Income</button> 
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+
+    <table id="output-table">
+        <tbody>
+            <tr>
+                <td>
+                    "This is where each item that is added from the first table will go"
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+
+    <table id="total-table">
+        <tbody>
+            <tr>
+                <td>
+                    Total Monthly Budget
+                </td>
+                <td>
+                    "This is where the total will go"
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./index.js"></script>
