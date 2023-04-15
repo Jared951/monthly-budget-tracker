@@ -1,114 +1,11 @@
 //html elements
-// let getAllBtn = document.querySelector('#btnId')
-// let addExpenses2 = document.querySelector('#expenseBtn')
-// let deleteExpense = document.querySelector('#deleteBtn')
-// let incomeTable = document.querySelectorAll('.income')
-// let expenseTable = document.querySelectorAll('.expense')
-// let addOneExpense = document.querySelector('#addExpense') 
+let addToTable = document.querySelector('post-table')
+let deleteFromTable = document.querySelector('deleteBtn')
+let tableTotal = document.querySelector('totalBtn')
 
-//functions
-// const btnOne = () => {
-//     axios.get("http://localhost:4000/api/allFinances")
-//         .then(res => {
-//             const data = res.data
-//                 let firstObj = data[0]
-//                 let i = 0 
-//                 for (const property in firstObj){
-//                     incomeTable[i].value = `${firstObj[property]}`
-//                     i++ 
-//                 }
+// functions
 
-//                 let secondObj = data[1]
-//                 let j = 0 
-//                 for (const property in secondObj){
-//                     expenseTable[j].value = `${secondObj[property]}`
-//                     j++ 
-//                 }
-
-
-//         })
-// }
-
-// const btnTwo = () => {
-//     axios.post("http://localhost:4000/api/addExpenses", {newExpense: addOneExpense.value})
-//         .then(res => {
-//             const data = res.data
-//             console.log(data)
-//             btnOne()
-//         })
-// }
-
-// const btnThree = () => {
-//     axios.delete("http://localhost:4000/api/deleteExpenses:id")
-//     .then(res => {
-//         const data = res.data
-//         console.log(data)
-//     })
-// }
-
-//event listeners
-// getAllBtn.addEventListener('click', btnOne)
-// addExpenses2.addEventListener('click', btnTwo)
-// deleteExpense.addEventListener('click', btnThree)
-
-
-let inputTable = document.querySelector('input-table')
-let outputTable = document.querySelector('output-table')
-let totalTable = document.querySelector('total-table')
-
-// gets info from first table THIS MIGHT NOT BE NEEDED
-const getOutputTable = () => {
-    // axios.get goes here
-    .then(res => {
-        const data = res.data
-        console.log(data)
-    })
-}
-
-// post first table content to second table
-const postOutputTable = () => {
-    // axios.post goes here
-    .then(res => {
-        const data = res.data
-        console.log(data)
-    })
-}
-
-// adds up the total from the second table
-const getTotal = () => {
-    // axios.get? goes here
-    .then(res => {
-        const data = res.data
-        console.log(data)
-    })
-}
-
-// function to delete a row in second table similar to alecs garbage cans from todo
-const deleteOutputTable = () => {
-    // axios.delete goes here
-    .then(res => {
-        const data = res.data
-        console.log(data)
-    })
-}
-
-// heres a loop i started writing to loop over the items in the input table that will go into the output table
-const toNewTable = () => {
-    let tableOne = document.getElementById('input-table')
-    let tableTwo = document.getElementById('output-table')
-    for(let i = 0; i < tableOne.rows.length; i++){
-        let row = tableOne.rows[i]
-        let newRow = document.createElement('tr')
-            for(let j = 0; j < row.cells.length; j++){
-                let cell = row.cells[j]
-                let newCell = document.createElement('td')
-                newCell.innerHTML = cell.innerHTML
-                newRow.appendChild(newCell)
-            }
-        newTableBody.appendChild(newRow)
-    }
-}
-
+// post first table array to second table
 // Get the existing table
 // Get the body of the new table
   
@@ -120,9 +17,56 @@ const toNewTable = () => {
 // Copy the contents of the existing cell to the new cell
 // Add the new cell to the new row
 // Add the new row to the new table
+const postToOutputTable = () => {
+    axios.post("http://localhost:4000/api/finances")
+    .then(res => {
+        const data = res.data
+        console.log(data)
+    })
+    //inprogress
+    let tableOne = document.getElementById('input-table')
+    let tableTwo = document.getElementById('output-table')
+    
+    for(let i = 0; i < tableOne.rows.length; i++){
+        let row = tableOne.rows[i]
+        let newRow = document.createElement('tr')
+            for(let j = 0; j < row.cells.length; j++){
+                let cell = row.cells[j]
+                let newCell = document.createElement('td')
+                newCell.innerHTML = cell.innerHTML
+                newRow.appendChild(newCell)
+            }
+        newTableBody.appendChild(newRow)
+    }
+    //inprogress
+    
+}
 
-  
+// function to delete a row in second table similar to alecs garbage cans from todo 
+// will delete everything from that row including the row itself to not leave blanks
+// in params put id axios.delete${id} `/api/finances/${id}`
+const deleteFromOutputTable = () => {
+    axios.delete(`http://localhost:4000/api/finances/${id}`)
+    .then(res => {
+        const data = res.data
+        console.log(data)
+    })
+}
 
-inputTable.addEventListener('', getOutputTable)
-outputTable.addEventListener('', postOutputTable)
-totalTable.addEventListener('', getTotal)
+// adds up the total from the second table but only the amount to be displayed in total-table
+// also needs to read from the income or expense option so that the function knows to add or subtract
+// possibly just when expense is selected it subtracts from the total
+// when income is selected it adds
+const getTotal = () => {
+    axios.post("http://localhost:4000/api/finances")
+    .then(res => {
+        const data = res.data
+        console.log(data)
+    })
+}
+
+// separate function here that passes
+
+addToTable.addEventListener('click', postToOutputTable)
+deleteFromTable.addEventListener('click', deleteFromOutputTable)
+tableTotal.addEventListener('click', getTotal)
