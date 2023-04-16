@@ -38,7 +38,7 @@ const postToOutputTable = () => {
             }
         newTableBody.appendChild(newRow)
     }
-    //inprogress
+    //inprogress, ajax?
     
 }
 
@@ -64,8 +64,6 @@ const getTotal = () => {
         console.log(data)
     })
 }
-
-// separate function here that passes
 
 addToTable.addEventListener('click', postToOutputTable)
 deleteFromTable.addEventListener('click', deleteFromOutputTable)

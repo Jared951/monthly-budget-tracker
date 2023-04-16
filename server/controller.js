@@ -27,7 +27,6 @@ module.exports = {
     },
 
     getTotalBudget: (req, res) => {
-        // res.status(200).send(finances)
         // needs to grab the total from all of the createExpenses added into table2 
         // the trick is that it needs to only grab from the total and then display it in the total-table 
         // use .reduce()
@@ -37,10 +36,8 @@ module.exports = {
         // check if the acc will add or subtract
         // once it returns that it will equal the total 
 
-        let total = finances.reduce((acc, curr) => {
-            console.log(curr)
-        },0)
-        // res status goes here .send(total)
+        const total = finances.reduce((acc, curr) => acc + curr.amount, 0)
+        res.status(200).send(total.toString())
     }
 
 }

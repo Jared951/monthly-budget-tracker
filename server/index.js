@@ -10,11 +10,11 @@ app.use(express.json())
 app.use(cors())
 
 // Endpoints
-const { createExpense, deleteExpense } = require('./controller')
+const { createExpense, deleteExpense, getTotalBudget } = require('./controller')
 
 app.post('/api/finances', createExpense)
 app.delete('/api/finances/:id', deleteExpense)
-app.get//to be continued
+app.get('/api/finances', getTotalBudget)
 
 
 // Start server with app.listen
