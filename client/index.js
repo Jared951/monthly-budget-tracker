@@ -1,70 +1,65 @@
 //html elements
-let addToTable = document.querySelector('post-table')
-let deleteFromTable = document.querySelector('deleteBtn')
-let tableTotal = document.querySelector('totalBtn')
+let addToTable = document.querySelector('#input-table')
+let tableTotal = document.querySelector('#totalBtn')
 
 // functions
+const postToOutputTable = (event) => {
+    event.preventDefault()
+    let expenseName = document.querySelector("#expenseName")
+    let amount = document.querySelector('#value')
+    let type = document.querySelector('#type')
+    let bodyObj = { name: expenseName.value, amount: +amount.value, type: type.value }
+    axios.post("http://localhost:4000/api/finances", bodyObj)
+        .then(res => {
+            const data = res.data[res.data.length - 1]
+            console.log(data)
+            expenseName.value = ''
+            amount.value = ''
 
-// post first table array to second table
-// Get the existing table
-// Get the body of the new table
-  
-// Loop through each row in the existing table
-// Create a new row for the new table
-  
-// Loop through each cell in the row and add it to the new row
-// Create a new cell for the new row
-// Copy the contents of the existing cell to the new cell
-// Add the new cell to the new row
-// Add the new row to the new table
-const postToOutputTable = () => {
-    axios.post("http://localhost:4000/api/finances")
-    .then(res => {
-        const data = res.data
-        console.log(data)
-    })
-    //inprogress
-    let tableOne = document.getElementById('input-table')
-    let tableTwo = document.getElementById('output-table')
-    
-    for(let i = 0; i < tableOne.rows.length; i++){
-        let row = tableOne.rows[i]
-        let newRow = document.createElement('tr')
-            for(let j = 0; j < row.cells.length; j++){
-                let cell = row.cells[j]
-                let newCell = document.createElement('td')
-                newCell.innerHTML = cell.innerHTML
-                newRow.appendChild(newCell)
-            }
-        newTableBody.appendChild(newRow)
-    }
-    //inprogress, ajax?
-    
+            const newExpense = document.createElement('div')
+            newExpense.classList.add('expense')
+            newExpense.id = `expense-${data.id}`
+            newExpense.innerHTML = `
+                <p>${data.name}</p>
+                <p>Type: ${data.type}</p>
+                <p>Amount: ${data.amount}</p>
+                
+                <button class="delete-btn" onclick=deleteFromOutputTable(${data.id})>Delete</button>
+            `
+            const outputSection = document.querySelector('#output-table')
+            outputSection.appendChild(newExpense)
+        }
+    )
 }
 
-// function to delete a row in second table similar to alecs garbage cans from todo 
-// will delete everything from that row including the row itself to not leave blanks
-// in params put id axios.delete${id} `/api/finances/${id}`
-const deleteFromOutputTable = () => {
+const deleteFromOutputTable = (id) => {
     axios.delete(`http://localhost:4000/api/finances/${id}`)
     .then(res => {
         const data = res.data
         console.log(data)
+
+        let deleteDiv = document.querySelector(`#expense-${id}`)
+        deleteDiv.remove()
+        
     })
 }
 
-// adds up the total from the second table but only the amount to be displayed in total-table
-// also needs to read from the income or expense option so that the function knows to add or subtract
-// possibly just when expense is selected it subtracts from the total
-// when income is selected it adds
 const getTotal = () => {
-    axios.post("http://localhost:4000/api/finances")
+    axios.get("http://localhost:4000/api/finances")
     .then(res => {
         const data = res.data
         console.log(data)
+ 
+        const totalTable = document.querySelector('#total-table')
+        totalTable.innerHTML = `
+          <div>
+            <p>Total:${data}</p>
+          </div>
+        `
+
     })
 }
 
-addToTable.addEventListener('click', postToOutputTable)
-deleteFromTable.addEventListener('click', deleteFromOutputTable)
+// event listeners
+addToTable.addEventListener('submit', postToOutputTable)
 tableTotal.addEventListener('click', getTotal)

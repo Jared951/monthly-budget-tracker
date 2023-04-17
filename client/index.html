@@ -8,73 +8,49 @@
     <title>Document</title>
 </head>
 <body>
-    <table id="input-table">
-        <!-- https://www.w3schools.com/tags/tag_form.asp -->
-        <!-- <form action="/action_page.php" method="get">
-            <label for="fname">First name:</label>
-            <input type="text" id="fname" name="fname"><br><br>
-            <label for="lname">Last name:</label>
-            <input type="text" id="lname" name="lname"><br><br>
-            <input type="submit" value="Submit">
-          </form> 
-            use form instead of table for adding income/expense -->
-        <tbody>
-            <tr>
-                <td>
-                    <input placeholder="Income or Expense Name"/>
-                </td>
-                <td>
-                    <select>
-                        <option>Income</option>
-                        <option>Expense</option>
-                    </select>
-                </td>
-                <td>
-                    <input type="number" placeholder="amount"/>
-                </td>
-                <td>
-                    <button onclick="toNewTable" id="post-table">Add Expense or Income</button> 
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <form id="input-table">
+       
+        <p>
+            <label>Income/Expense</label>
+                <input id="expenseName" placeholder="Income or Expense Name"/>
+        </p>
+
+        <p>
+            <label>Choose type</label>
+                <select id="type">
+                    <option value="Income">Income</option>
+                    <option value="Expense">Expense</option>
+                </select>
+        </p>
+
+        <p>
+            <label>Enter Amount</label>
+                <input id="value" type="number" placeholder="amount"/>
+                <button id="post-table">Add Expense or Income</button> 
+        </p>
+              
+    </form>
 
     <br>
 
-    <table id="output-table">
-        <tbody>
-            <tr>
-                <td>
-                    "This is where each item that is added from the first table will go"
-                </td>
-                <td>
-                    <button id="deleteBtn">Delete item</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <section id="output-table">
+        <p>
+            <label>Monthly Income and Expense:</label>
+        </p>
+            
+    </section>
 
     <br>
 
-    <table id="total-table">
-        <tbody>
-            <tr>
-                <td>
-                    Total Monthly Budget
-                </td>
-                <td>
-                    "This is where the total will go"
-                </td>
-                <td>
-                    <button id="totalBtn">Get Total</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <section id="total-table">
+
+        <p>
+            <button id="totalBtn">Get Total</button>
+        </p> 
+
+    </section>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./index.js"></script>
 </body>
 </html>
-
-<!-- div > item > h1 > -->
