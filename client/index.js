@@ -20,9 +20,9 @@ const postToOutputTable = (event) => {
             newExpense.classList.add('expense')
             newExpense.id = `expense-${data.id}`
             newExpense.innerHTML = `
-                <p>${data.name}</p>
-                <p>Type: ${data.type}</p>
-                <p>Amount: ${data.amount}</p>
+                <p id="newExpense">${data.name}</p>
+                <p id="newExpense">Type: ${data.type}</p>
+                <p id="newExpense">Amount: ${data.amount}</p>
                 
                 <button class="delete-btn" onclick=deleteFromOutputTable(${data.id})>Delete</button>
             `
@@ -53,7 +53,7 @@ const getTotal = () => {
         const totalTable = document.querySelector('#total-table')
         totalTable.innerHTML = `
           <div>
-            <p>Total:${data}</p>
+            <p id="the-total">Total: ${data}</p>
           </div>
         `
 
