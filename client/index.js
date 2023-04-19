@@ -15,15 +15,14 @@ const postToOutputTable = (event) => {
             console.log(data)
             expenseName.value = ''
             amount.value = ''
-
+            
             const newExpense = document.createElement('div')
             newExpense.classList.add('expense')
             newExpense.id = `expense-${data.id}`
             newExpense.innerHTML = `
-                <p id="newExpense">${data.name}</p>
-                <p id="newExpense">Type: ${data.type}</p>
-                <p id="newExpense">Amount: ${data.amount}</p>
-                
+                <p id="newExpense"><label>Name: </label><span>${data.name}</span></p>
+                <p id="newExpense"><label>Type: </label><span>${data.type}</span></p>
+                <p id="newExpense"><label>Amount: </label><span>${data.amount}</span></p>
                 <button class="delete-btn" onclick=deleteFromOutputTable(${data.id})>Delete</button>
             `
             const outputSection = document.querySelector('#output-table')
