@@ -10,12 +10,10 @@
 <body>
     <h1>Monthly Budget Tracker</h1>
     <form id="input-table">
-       
         <p>
             <label>Income/Expense:</label>
                 <input id="expenseName" placeholder="Income or Expense Name"/>
         </p>
-
         <p>
             <label>Choose type:</label>
                 <select id="type">
@@ -23,32 +21,27 @@
                     <option value="Expense">Expense</option>
                 </select>
         </p>
-
         <p>
             <label>Enter Amount:</label>
-                <input id="value" type="number" placeholder="Amount"/>
-                <button id="post-table">Add Expense or Income</button> 
-        </p>
-              
+            <input id="value" type="number" placeholder="Amount"/>
+            <button id="post-table">Add Expense or Income</button> 
+        </p> 
     </form>
 
     <br>
 
-    <section id="output-table">
+    <section id="output-table"> 
         <p>
             <label><b>Monthly Income and Expense:</b></label>
-        </p>
-            
+        </p>       
     </section>
 
     <br>
 
     <section id="total-table">
-
         <p>
             <button id="totalBtn">Get Total</button>
         </p> 
-
     </section>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
