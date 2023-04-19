@@ -10,8 +10,6 @@ h1 {
 	margin-top: 20px;
 }
 
-/* table 1 */
-
 #input-table {
 	margin: 20px auto;
 	max-width: 600px;
@@ -59,8 +57,6 @@ h1 {
 	background-color: darkgreen;
 }
 
-/* table 2 */
-
 #output-table {
 	max-width: 600px;
 	margin: 20px auto;
@@ -103,8 +99,6 @@ h1 {
 .delete-btn:hover {
 	background-color: darkred;
 }
-
-/* table 3 */
 
 #total-table {
 	max-width: 600px;

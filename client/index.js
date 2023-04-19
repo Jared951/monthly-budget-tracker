@@ -1,8 +1,6 @@
-//html elements
 let addToTable = document.querySelector('#input-table')
 let tableTotal = document.querySelector('#totalBtn')
 
-// functions
 const postToOutputTable = (event) => {
     event.preventDefault()
     let expenseName = document.querySelector("#expenseName")
@@ -59,6 +57,5 @@ const getTotal = () => {
     })
 }
 
-// event listeners
 addToTable.addEventListener('submit', postToOutputTable)
 tableTotal.addEventListener('click', getTotal)
